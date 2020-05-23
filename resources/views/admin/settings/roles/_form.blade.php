@@ -1,4 +1,29 @@
 <div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-text-width"></i>
+                    Detalhes
+                </h3>
+            </div>
+            <div class="card-body">
+                <dl>
+                    <dt>Cadastrar</dt>
+                    <dd>Para cadastrar uma nova função apenas defina o nome de facil descrição e vincule as permissões
+                        que devem ser fornecidas para a mesma
+                    </dd>
+                    <dt>Editar</dt>
+                    <dd>Para editar uma nova função vincule ou desvincule as permissões relacionadas.
+                    </dd>
+                    <dt>Deletar</dt>
+                    <dd>Deletar uma função desviculará a mesma de todos usuários relacionados.</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
     <div class="col-md-6">
         <div class="card card-secondary">
             <div class="card-header">
@@ -13,11 +38,11 @@
                 <div class="form-group">
                     <label for="name">Nome</label>
                     <input type="name" class="form-control @error('name') is-invalid @enderror"
-                           id="name" name="name" required placeholder="Ex: Gestor financeiro"
+                           id="name" name="name" placeholder="Ex: Gestor financeiro"
                            maxlength="50" value="{{ $role->name ?? null }}">
                     @error('name')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        {{ $message }}
                     </span>
                     @enderror
                 </div>
@@ -48,7 +73,7 @@
                                    for="permissions{{$permission->id}}">{{$permission->name}}</label>
                             @error('permissions')
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                {{ $message }}
                             </span>
                             @enderror
                         </div>

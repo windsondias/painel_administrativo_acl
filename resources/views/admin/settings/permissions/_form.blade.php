@@ -1,5 +1,32 @@
 <div class="row">
     <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">
+                    <i class="fas fa-text-width"></i>
+                    Detalhes
+                </h3>
+            </div>
+            <div class="card-body">
+                <dl>
+                    <dt>Cadastrar</dt>
+                    <dd>Para criar uma nova permissão é necessário informar o administrador do sistema, pois os
+                        bloqueios que a
+                        mesma realizara tem que ser definidos diretamente no código fonte.
+                    </dd>
+                    <dt>Editar</dt>
+                    <dd>Editar o nome de uma permissão sem avisar o administrador do sistema irá fazer com que a mesma
+                        deixe de funcionar.
+                    </dd>
+                    <dt>Deletar</dt>
+                    <dd>Deletar uma permissão desviculará a mesma de todas as funções relacionadas.</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
         <div class="card card-danger">
             <div class="card-header">
                 <h3 class="card-title">Permissão</h3>
@@ -13,11 +40,11 @@
                 <div class="form-group">
                     <label for="name">Nome</label>
                     <input type="name" class="form-control @error('name') is-invalid @enderror"
-                           id="name" name="name" required placeholder="Ex: Cadastrar Usuário"
+                           id="name" name="name" placeholder="Ex: Cadastrar Usuário"
                            maxlength="50" value="{{ $permission->name ?? null }}">
                     @error('name')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        {{ $message }}
                     </span>
                     @enderror
                 </div>

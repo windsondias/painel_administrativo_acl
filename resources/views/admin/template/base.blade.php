@@ -24,6 +24,13 @@
 
     </div>
 </div>
+<footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+        <b>Versão</b> 1.0.0
+    </div>
+    <strong>Copyright &copy; 2020-2020 <a href="http://styletech.com.br" target="_blank">StyleTech</a>.</strong> Todos direitos
+    reservados.
+</footer>
 
 
 <script src="{{asset('admin/js/jquery.min.js')}}"></script>

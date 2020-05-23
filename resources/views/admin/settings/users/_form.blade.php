@@ -25,7 +25,7 @@
                                maxlength="50" value="{{old('name', $user->name ?? null)}}">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            {{ $message }}
                         </span>
                         @enderror
                     </div>
@@ -36,7 +36,7 @@
                                maxlength="100" value="{{old('lastname', $user->lastname ?? null)}}">
                         @error('lastname')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            {{ $message }}
                         </span>
                         @enderror
                     </div>
@@ -48,7 +48,7 @@
                            maxlength="100" value="{{old('email', $user->email ?? null)}}">
                     @error('email')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                       {{ $message }}
                     </span>
                     @enderror
                 </div>
@@ -59,7 +59,7 @@
                            maxlength="20" value="{{old('username', $user->username ?? null)}}">
                     @error('username')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        {{ $message }}
                     </span>
                     @enderror
                 </div>
@@ -71,7 +71,7 @@
                                maxlength="15">
                         @error('password')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                            {{ $message }}
                         </span>
                         @enderror
                     </div>
@@ -82,7 +82,7 @@
                                name="password_confirmation" maxlength="15">
                         @error('password_confirmation')
                         <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
+                           {{ $message }}
                         </span>
                         @enderror
                     </div>
@@ -111,7 +111,7 @@
                                 <label class="custom-control-label" for="role{{$role->id}}">{{$role->name}}</label>
                                 @error('roles')
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                   {{ $message }}
                                 </span>
                                 @enderror
                             </div>
