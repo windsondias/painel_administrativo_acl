@@ -18,7 +18,6 @@
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
-                    @can('editar')
                         <li class="nav-item">
                             <a href="{{route('admin.roles.index')}}"
                                class="nav-link @if(request()->is('admin/settings/roles*')) active @endif">
@@ -26,7 +25,6 @@
                                 <p>Funções</p>
                             </a>
                         </li>
-                        @endcan
                         <li class="nav-item">
                             <a href="{{route('admin.permissions.index')}}"
                                class="nav-link @if(request()->is('admin/settings/permissions*')) active @endif">
@@ -64,9 +62,6 @@
                 </li>
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>
-<!-- Content Wrapper. Contains page content -->
 
