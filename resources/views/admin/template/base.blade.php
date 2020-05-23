@@ -18,7 +18,7 @@
     @include('admin.template.navbar')
     @include('admin.template.sidebar')
 
-    <div class="content-wrapper">
+    <div class="content-wrapper pb-2">
 
         @yield('content')
 

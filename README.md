@@ -18,7 +18,7 @@
 * Rodar o comando `php artisan migrate`.
 * Rodar o comando `php artisan db:seed`'.
 
-<p>Após concluir esses passos já é possivel iniciar o servidor local para desenvolvimento. Para acessar o sistema utilizar os seguintes dados:<br><br>
+<p>Após concluir esses passos já é possivel iniciar o servidor local para desenvolvimento. Utilizar os seguintes dados para acesso:<br><br>
 Usuário: admin <br>
 Senha: admin123
 </p>
