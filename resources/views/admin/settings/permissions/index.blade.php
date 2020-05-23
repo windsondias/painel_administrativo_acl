@@ -5,13 +5,13 @@
 @section('content')
 
     <div class="container pt-3">
-        <div class="row mb-3">
-            <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6 mb-3">
                 <a href="{{route('admin.permissions.create')}}">
                     <button class="btn btn-outline-secondary">Adicionar Permissão</button>
                 </a>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mb-3">
                 <div class="input-group">
                     <input type="text" class="form-control" id="search_permission" placeholder="Pesquisar Permissão">
                     <div class="input-group-append">

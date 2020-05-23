@@ -123,12 +123,14 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-12">
+    <div class="col-md-6 mb-3">
         <a href="{{route('admin.users.index')}}">
-            <button type="button" class="btn btn-outline-secondary">Voltar a tela principal</button>
+            <button type="button" class="btn btn-block btn-outline-secondary">Voltar a tela principal</button>
         </a>
+    </div>
+    <div class="col-md-6 mb-3">
         <button type="submit"
-                class="btn btn-outline-success float-right">@if(request()->is('admin/settings/users/create')) Cadastrar
+                class="btn btn-block btn-outline-success">@if(request()->is('admin/settings/users/create')) Cadastrar
             Usuário  @else  Atualizar Usuário @endif </button>
     </div>
 </div>
