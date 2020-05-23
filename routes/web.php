@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', 'Auth\LoginController@login')->name('index');
+Route::get('/', 'Auth\LoginController@showLoginForm')->name('index');
 
 Route::namespace('Admin')->name('admin.')->prefix('/admin')->middleware('auth')->group(function () {
 
