@@ -4,7 +4,6 @@
 
 * PHP ^7.3.
 * MySql.
-* Node.js.
 
 #Instalação
 
@@ -18,13 +17,19 @@
 * Rodar o comando `php artisan key:generate`.
 * Rodar o comando `php artisan migrate`.
 * Rodar o comando `php artisan db:seed`'.
+
+<p>Após concluir esses passos já é possivel iniciar o servidor local para desenvolvimento. Para acessar o sistema utilizar os seguintes dados:<br><br>
+Usuário: admin <br>
+Senha: admin123
+</p>
+
+<p>Na instalação realizada estão presentes os pacotes basicos que o template AdminLTE utiliza. Novos componentes e plugins podem ser adicionados da forma padrão (baixando e importando o link nas views) ou instalando dependencias via Laravel mix, nesse caso é necessario executar os comandos abaixo:</p>
+
 * Rodar o comando `npm install`.
 * Rodar o comando `npm i jquery`.
 * Rodar o comando `npm install --save @fortawesome/fontawesome-free`.
 * Rodar o comando `npm i overlayscrollbars`.
 * Rodar o comando `npm run dev`.
 * Rodar o comando `php artisan serve`.
-
-<p>Após rodar os comandos, acesse sua aplicação através do link informado no terminal e desenvolva a partir deste ponto.</p>
 
 
