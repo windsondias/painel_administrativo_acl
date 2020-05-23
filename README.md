@@ -5,6 +5,8 @@
 * PHP ^7.3.
 * MySql.
 
+<p>Para criar regras de permissão o projeto utiliza um componente, acesse a documentação do <a href="https://docs.spatie.be/laravel-permission/v3/introduction/">Laravel Permission</a> e aplique as politicas da forma que desejar.</p>
+
 #Instalação
 
 <p>O sistema foi construido utilizando como base o layout AdminLTE, para ter todos os recursos disponiveis, seguir os passos de instalação</p>
