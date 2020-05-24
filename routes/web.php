@@ -32,7 +32,11 @@ Route::namespace('Admin')->name('admin.')->middleware('auth')->group(function ()
             Route::resource('permissions', 'PermissionController');
         });
 
+        Route::namespace('Errors')->prefix('/errors')->name('errors.')->group(function () {
+            Route::get('/403', 'ErrorController@error403')->name('403');
+        });
     });
+
 
 });
 

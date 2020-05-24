@@ -19,6 +19,9 @@ class UserController extends Controller
 
     public function index()
     {
+        if(!auth()->user()->hasRole('usuarios_visualizar')){
+            return redirect()->route('admin.errors.403');
+        }
         $users = $this->user::where('id', '<>', auth()->user()->id)->paginate(20);
         return view('admin.settings.users.index', compact('users'));
     }
