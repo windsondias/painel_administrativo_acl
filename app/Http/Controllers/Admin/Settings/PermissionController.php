@@ -21,7 +21,7 @@ class PermissionController extends Controller
         if(!auth()->user()->hasPermissionTo('permissions_view')){
             return redirect()->route('admin.errors.403');
         }
-        $permissions = $this->permission::paginate(20);
+        $permissions = $this->permission::orderBy('name_view')->paginate(20);
         return view('admin.settings.permissions.index', compact('permissions'));
     }
 
@@ -45,6 +45,7 @@ class PermissionController extends Controller
         try {
             $permission = $this->permission;
             $permission->name = $request->name;
+            $permission->name_view = $request->name_view;
             $permission->guard_name = 'web';
             $permission->save();
 
@@ -81,6 +82,7 @@ class PermissionController extends Controller
         try {
             $permission = $this->permission::find($id);
             $permission->name = $request->name;
+            $permission->name_view = $request->name_view;
             $permission->save();
 
             return redirect()->route('admin.permissions.index')->withErrors([

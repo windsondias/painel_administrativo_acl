@@ -75,7 +75,7 @@
                                    id="permissions{{$permission->id}}" value="{{$permission->id}}"
                                    name="permissions[]" @if($permission->can) checked @else '' @endif>
                             <label class="custom-control-label"
-                                   for="permissions{{$permission->id}}">{{$permission->name}}</label>
+                                   for="permissions{{$permission->id}}">{{$permission->name_view}}</label>
                             @error('permissions')
                             <span class="invalid-feedback" role="alert">
                                 {{ $message }}

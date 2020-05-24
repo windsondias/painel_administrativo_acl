@@ -47,6 +47,7 @@
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nome</th>
+                            <th scope="col">Nome Visivel</th>
                             <th colspan="2" scope="col"></th>
                         </tr>
                         </thead>
@@ -60,6 +61,7 @@
                                 <tr>
                                     <th scope="row">{{$permission->id}}</th>
                                     <td>{{$permission->name}}</td>
+                                    <td>{{$permission->name_view}}</td>
                                     <td width="10">
                                         @can('permissions_edit')
                                         <a href="{{route('admin.permissions.edit', ['permission' => $permission->id])}}">
@@ -154,6 +156,7 @@
                                 tr += '<tr>' +
                                     '<td>' + data[i].id + '</td>' +
                                     '<td>' + data[i].name + '</td>' +
+                                    '<td>' + data[i].name_view + '</td>' +
                                     '<td width="10"> @can('permissions_edit')' +
                                     '    <a href="' + route + '"> <button class="btn btn-warning" title="Editar"><i class="fas fa-pencil-alt"></i></button></a>' +
                                     ' @endcan</td>' +

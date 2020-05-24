@@ -21,7 +21,7 @@ class RoleController extends Controller
         if(!auth()->user()->hasPermissionTo('roles_view')){
             return redirect()->route('admin.errors.403');
         }
-        $roles = $this->role::paginate(20);
+        $roles = $this->role::orderBy('name')->paginate(20);
         return view('admin.settings.roles.index', compact('roles'));
     }
 

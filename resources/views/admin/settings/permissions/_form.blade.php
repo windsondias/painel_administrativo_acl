@@ -37,16 +37,33 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="form-group">
-                    <label for="name">Nome</label>
-                    <input type="name" class="form-control @error('name') is-invalid @enderror"
-                           id="name" name="name" placeholder="Ex: Cadastrar Usuário"
-                           maxlength="50" value="{{ $permission->name ?? null }}">
-                    @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        {{ $message }}
-                    </span>
-                    @enderror
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                   id="name" name="name" placeholder="Ex: users_create"
+                                   maxlength="50" value="{{ $permission->name ?? null }}">
+                            @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                {{ $message }}
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">Nome Visivel</label>
+                            <input type="text" class="form-control @error('name_view') is-invalid @enderror"
+                                   id="name_view" name="name_view" placeholder="Ex: Cadastrar Usuário"
+                                   maxlength="50" value="{{ $permission->name_view ?? null }}">
+                            @error('name_view')
+                            <span class="invalid-feedback" role="alert">
+                                {{ $message }}
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
