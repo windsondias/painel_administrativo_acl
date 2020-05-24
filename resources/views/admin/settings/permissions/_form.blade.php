@@ -38,7 +38,7 @@
             </div>
             <div class="card-body">
                 <div class="form-row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="name">Nome</label>
                             <input type="text" class="form-control @error('name') is-invalid @enderror"
@@ -51,7 +51,20 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="name">Nome Menu</label>
+                            <input type="text" class="form-control @error('menu') is-invalid @enderror"
+                                   id="menu" name="menu" placeholder="Ex: settings"
+                                   maxlength="50" value="{{ $permission->menu ?? null }}">
+                            @error('menu')
+                            <span class="invalid-feedback" role="alert">
+                                {{ $message }}
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label for="name">Nome Visivel</label>
                             <input type="text" class="form-control @error('name_view') is-invalid @enderror"

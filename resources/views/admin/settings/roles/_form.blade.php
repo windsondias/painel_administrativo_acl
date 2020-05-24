@@ -64,25 +64,52 @@
                     <label for="permissions">Selecione as permissões que está função pode
                         ter</label>
                     @if(isset($permissions) && $permissions->count() > 0)
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="check_all">
-                        <label class="custom-control-label" for="check_all">Selecionar Todas</label>
-                    </div>
-                    @foreach($permissions as $permission)
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox"
-                                   class="custom-control-input @error('permissions') is-invalid @enderror permissions"
-                                   id="permissions{{$permission->id}}" value="{{$permission->id}}"
-                                   name="permissions[]" @if($permission->can) checked @else '' @endif>
-                            <label class="custom-control-label"
-                                   for="permissions{{$permission->id}}">{{$permission->name_view}}</label>
-                            @error('permissions')
-                            <span class="invalid-feedback" role="alert">
-                                {{ $message }}
-                            </span>
-                            @enderror
+                            <input type="checkbox" class="custom-control-input" id="check_all">
+                            <label class="custom-control-label" for="check_all">Selecionar Todas</label>
                         </div>
-                    @endforeach
+                        <div class="dropdown-divider"></div>
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+                                     aria-orientation="vertical">
+                                    <a class="nav-link active bg-secondary" id="settings_tab" data-toggle="pill"
+                                       href="#settings_tab_content">Configurações</a>
+                                    {{-- <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"
+                                        href="#v-pills-profile" role="tab" aria-controls="v-pills-profile"
+                                        aria-selected="false">Profile</a>--}}
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="tab-content" id="v-pills-tabContent">
+                                    <div class="tab-pane fade show active" id="settings_tab_content">
+                                        @foreach($permissions as $permission)
+                                            @if($permission->menu == 'settings')
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox"
+                                                           class="custom-control-input @error('permissions') is-invalid @enderror permissions"
+                                                           id="permissions{{$permission->id}}"
+                                                           value="{{$permission->id}}"
+                                                           name="permissions[]"
+                                                           @if($permission->can) checked @else '' @endif>
+                                                    <label class="custom-control-label"
+                                                           for="permissions{{$permission->id}}">{{$permission->name_view}}</label>
+                                                    @error('permissions')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        {{ $message }}
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                    {{--                                    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel"--}}
+                                    {{--                                         aria-labelledby="v-pills-profile-tab">--}}
+                                    {{--                                    </div>--}}
+                                </div>
+                            </div>
+                        </div>
+
                     @else
                         <p>Para cadastrar ou editar uma função é necessario ter permissões cadastradas.</p>
                     @endif
@@ -109,15 +136,15 @@
     <script>
 
         $(document).ready(function () {
-            if($('.permissions').prop("checked")){
+            if ($('.permissions').prop("checked")) {
                 $("#check_all").prop("checked", true);
-            }else{
+            } else {
                 $("#check_all").prop("checked", false);
             }
             $('#check_all').change(function () {
-                if($(this).prop("checked")){
+                if ($(this).prop("checked")) {
                     $(".permissions").prop("checked", true);
-                }else{
+                } else {
                     $(".permissions").prop("checked", false);
                 }
             });

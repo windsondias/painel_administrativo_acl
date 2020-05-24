@@ -46,6 +46,7 @@ class PermissionController extends Controller
             $permission = $this->permission;
             $permission->name = $request->name;
             $permission->name_view = $request->name_view;
+            $permission->menu = $request->menu;
             $permission->guard_name = 'web';
             $permission->save();
 
@@ -83,6 +84,7 @@ class PermissionController extends Controller
             $permission = $this->permission::find($id);
             $permission->name = $request->name;
             $permission->name_view = $request->name_view;
+            $permission->menu = $request->menu;
             $permission->save();
 
             return redirect()->route('admin.permissions.index')->withErrors([
