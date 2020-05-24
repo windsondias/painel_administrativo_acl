@@ -7,9 +7,11 @@
     <div class="container pt-3">
         <div class="row">
             <div class="col-md-6 mb-3">
+                @can('roles_create')
                 <a href="{{route('admin.roles.create')}}">
                     <button class="btn btn-outline-secondary">Adicionar Função</button>
                 </a>
+                @endcan
             </div>
             <div class="col-md-6 mb-3w">
                 <div class="input-group">
@@ -59,18 +61,22 @@
                                     <th scope="row">{{$role->id}}</th>
                                     <td>{{$role->name}}</td>
                                     <td width="10">
+                                        @can('roles_edit')
                                         <a href="{{route('admin.roles.edit', ['role' => $role->id])}}">
                                             <button class="btn btn-warning" title="Editar">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </button>
                                         </a>
+                                        @endcan
                                     </td>
                                     <td width="10">
+                                        @can('roles_destroy')
                                         <button class="btn btn-danger" id="btn_delete_role" role="{{$role->id}}"
                                                 title="Excluir" data-toggle="modal"
                                                 data-target="#modal_delete_role">
                                             <i class="fas fa-trash"></i>
                                         </button>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
@@ -147,12 +153,12 @@
                                 tr += '<tr>' +
                                     '<td>' + data[i].id + '</td>' +
                                     '<td>' + data[i].name + '</td>' +
-                                    '<td width="10">' +
+                                    '<td width="10"> @can('roles_edit')' +
                                     '    <a href="' + route + '"> <button class="btn btn-warning" title="Editar"><i class="fas fa-pencil-alt"></i></button></a>' +
-                                    '</td>' +
-                                    '<td width="10">' +
+                                    ' @endcan</td>' +
+                                    '<td width="10"> @can('roles_destroy')' +
                                     '    <button class="btn btn-danger" id="btn_delete_role" role="' + data[i].id + '" title="Excluir" data-toggle="modal" data-target="#modal_delete_role"> <i class="fas fa-trash"></i></button>' +
-                                    '</td></tr>';
+                                    ' @endcan</td></tr>';
                             }
                         }
                         $('#body_table_roles').html(tr).show();

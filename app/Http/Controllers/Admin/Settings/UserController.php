@@ -19,7 +19,7 @@ class UserController extends Controller
 
     public function index()
     {
-        if(!auth()->user()->hasRole('usuarios_visualizar')){
+        if(!auth()->user()->hasPermissionTo('users_view')){
             return redirect()->route('admin.errors.403');
         }
         $users = $this->user::where('id', '<>', auth()->user()->id)->paginate(20);
@@ -28,12 +28,18 @@ class UserController extends Controller
 
     public function create()
     {
+        if(!auth()->user()->hasPermissionTo('users_create')){
+            return redirect()->route('admin.errors.403');
+        }
         $roles = Role::orderBy('name')->get();
         return view('admin.settings.users.create', compact('roles'));
     }
 
     public function store(Request $request)
     {
+        if(!auth()->user()->hasPermissionTo('users_create')){
+            return redirect()->route('admin.errors.403');
+        }
         $validatedData = $request->validate([
             'name' => 'required|max:50',
             'lastname' => 'required|max:100',
@@ -78,6 +84,9 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        if(!auth()->user()->hasPermissionTo('users_edit')){
+            return redirect()->route('admin.errors.403');
+        }
         $user = $this->user::find($id);
         $roles = Role::orderBy('name')->get();
         foreach ($roles as $role){
@@ -92,6 +101,9 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        if(!auth()->user()->hasPermissionTo('users_edit')){
+            return redirect()->route('admin.errors.403');
+        }
         $validatedData = $request->validate([
             'name' => 'required|max:50',
             'lastname' => 'required|max:100',
@@ -136,6 +148,9 @@ class UserController extends Controller
 
     public function destroy($id)
     {
+        if(!auth()->user()->hasPermissionTo('users_destroy')){
+            return redirect()->route('admin.errors.403');
+        }
         try {
             $user = $this->user::find($id);
             $user->delete();
@@ -152,6 +167,9 @@ class UserController extends Controller
 
     public function search(Request $request)
     {
+        if(!auth()->user()->hasPermissionTo('users_view')){
+            return redirect()->route('admin.errors.403');
+        }
         $user = $this->user::where('id', '<>', auth()->user()->id)
             ->where('name', 'like', '%'.$request->user.'%')
             ->get();

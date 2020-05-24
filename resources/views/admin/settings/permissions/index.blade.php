@@ -7,9 +7,11 @@
     <div class="container pt-3">
         <div class="row">
             <div class="col-md-6 mb-3">
+                @can('permissions_create')
                 <a href="{{route('admin.permissions.create')}}">
                     <button class="btn btn-outline-secondary">Adicionar Permissão</button>
                 </a>
+                @endcan
             </div>
             <div class="col-md-6 mb-3">
                 <div class="input-group">
@@ -59,19 +61,23 @@
                                     <th scope="row">{{$permission->id}}</th>
                                     <td>{{$permission->name}}</td>
                                     <td width="10">
+                                        @can('permissions_edit')
                                         <a href="{{route('admin.permissions.edit', ['permission' => $permission->id])}}">
                                             <button class="btn btn-warning" title="Editar">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </button>
                                         </a>
+                                        @endcan
                                     </td>
                                     <td width="10">
+                                        @can('permissions_destroy')
                                         <button class="btn btn-danger" id="btn_delete_permission"
                                                 permission="{{$permission->id}}"
                                                 title="Excluir" data-toggle="modal"
                                                 data-target="#modal_delete_permission">
                                             <i class="fas fa-trash"></i>
                                         </button>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
@@ -148,12 +154,12 @@
                                 tr += '<tr>' +
                                     '<td>' + data[i].id + '</td>' +
                                     '<td>' + data[i].name + '</td>' +
-                                    '<td width="10">' +
+                                    '<td width="10"> @can('permissions_edit')' +
                                     '    <a href="' + route + '"> <button class="btn btn-warning" title="Editar"><i class="fas fa-pencil-alt"></i></button></a>' +
-                                    '</td>' +
-                                    '<td width="10">' +
+                                    ' @endcan</td>' +
+                                    '<td width="10"> @can('permissions_destroy')' +
                                     '    <button class="btn btn-danger" id="btn_delete_permission" permission="' + data[i].id + '" title="Excluir" data-toggle="modal" data-target="#modal_delete_permission"> <i class="fas fa-trash"></i></button>' +
-                                    '</td></tr>';
+                                    '@endcan</td> </tr>';
                             }
                         }
                         $('#body_table_permissons').html(tr).show();

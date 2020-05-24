@@ -102,10 +102,12 @@
                     <a href="#" class="dropdown-item">
                        Olá, {{auth()->user()->name}}
                     </a>
+                    @can('users_edit')
                     <div class="dropdown-divider"></div>
                     <form method="GET" id="form_profile" action="{{route('admin.users.edit', ['user' => auth()->user()->id])}}">
                         <a class="dropdown-item" href="javascript:document.querySelector('#form_profile').submit();">  <i class="fas fa-user mr-2"></i> Conta</a>
                     </form>
+                    @endcan
                     <div class="dropdown-divider"></div>
                     <form method="POST" id="form_logout" action="{{route('logout')}}">
                         @csrf

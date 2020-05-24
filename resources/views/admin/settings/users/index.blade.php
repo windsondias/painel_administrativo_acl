@@ -8,10 +8,13 @@
     <div class="container pt-3">
         <div class="row">
             <div class="col-md-6 mb-3">
+                @can('users_create')
                 <a href="{{route('admin.users.create')}}">
                     <button class="btn btn-outline-secondary">Adicionar Usuário</button>
                 </a>
+                @endcan
             </div>
+
             <div class="col-md-6 mb-3">
                 <div class="input-group">
                     <input type="text" class="form-control" id="search_user" placeholder="Pesquisar Usuário">
@@ -64,13 +67,16 @@
                                     <td>{{$user->lastname}}</td>
                                     <td>{{$user->email}}</td>
                                     <td width="10">
+                                        @can('users_edit')
                                         <a href="{{route('admin.users.edit', ['user' => $user->id])}}">
                                             <button class="btn btn-warning" title="Editar">
                                                 <i class="fas fa-pencil-alt"></i>
                                             </button>
                                         </a>
+                                        @endcan
                                     </td>
                                     <td width="10">
+                                        @can('users_destroy')
                                         @if(auth()->user()->id != $user->id)
                                             <button class="btn btn-danger" id="btn_delete_user" user="{{$user->id}}"
                                                     title="Excluir" data-toggle="modal"
@@ -78,6 +84,7 @@
                                                 <i class="fas fa-trash"></i>
                                             </button>
                                         @endif
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
@@ -158,10 +165,10 @@
                                     '<td>' + data[i].name + '</td>' +
                                     '<td>' + data[i].lastname + '</td>' +
                                     '<td>' + data[i].email + '</td>' +
-                                    '<td width="10">' +
+                                    '<td width="10"> @can('users_edit')' +
                                     '    <a href="' + route + '"> <button class="btn btn-warning" title="Editar"><i class="fas fa-pencil-alt"></i></button></a>' +
-                                    '</td>' +
-                                    '<td width="10"> ' + userDelete + ' </td></tr>';
+                                    ' @endcan</td>' +
+                                    '<td width="10"> @can('users_destroy')' + userDelete + ' @endcan</td></tr>';
                             }
                         }
                         $('#body_table_users').html(tr).show();

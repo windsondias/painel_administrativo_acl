@@ -10,7 +10,7 @@
         <nav class="mt-2 ">
             <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent nav-flat" data-widget="treeview"
                 role="menu" data-accordion="false">
-                @can('configuracoes_visualizar')
+                @can('settings_view')
                     <li class="nav-item has-treeview @if(request()->is('admin/settings/*')) menu-open @endif">
                         <a href="#" class="nav-link @if(request()->is('admin/settings/*')) active @endif">
                             <i class="fas fa-cog nav-icon"></i>
@@ -20,7 +20,7 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            @can('funcoes_visualizar')
+                            @can('roles_view')
                                 <li class="nav-item">
                                     <a href="{{route('admin.roles.index')}}"
                                        class="nav-link @if(request()->is('admin/settings/roles*')) active @endif">
@@ -29,7 +29,7 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('permissoes_visualizar')
+                            @can('permissions_view')
                                 <li class="nav-item">
                                     <a href="{{route('admin.permissions.index')}}"
                                        class="nav-link @if(request()->is('admin/settings/permissions*')) active @endif">
@@ -38,7 +38,7 @@
                                     </a>
                                 </li>
                             @endcan
-                            @can('usuarios_visualizar')
+                            @can('users_view')
                                 <li class="nav-item">
                                     <a href="{{route('admin.users.index')}}"
                                        class="nav-link @if(request()->is('admin/settings/users*')) active @endif">

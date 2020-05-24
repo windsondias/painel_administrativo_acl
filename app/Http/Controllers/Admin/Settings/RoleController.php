@@ -18,18 +18,27 @@ class RoleController extends Controller
 
     public function index()
     {
+        if(!auth()->user()->hasPermissionTo('roles_view')){
+            return redirect()->route('admin.errors.403');
+        }
         $roles = $this->role::paginate(20);
         return view('admin.settings.roles.index', compact('roles'));
     }
 
     public function create()
     {
+        if(!auth()->user()->hasPermissionTo('roles_create')){
+            return redirect()->route('admin.errors.403');
+        }
         $permissions = Permission::orderBy('name')->get();
         return view('admin.settings.roles.create', compact('permissions'));
     }
 
     public function store(Request $request)
     {
+        if(!auth()->user()->hasPermissionTo('roles_create')){
+            return redirect()->route('admin.errors.403');
+        }
         $validatedData = $request->validate([
             'name' => 'required|max:50',
             'permissions' => 'required',
@@ -66,6 +75,9 @@ class RoleController extends Controller
 
     public function edit($id)
     {
+        if(!auth()->user()->hasPermissionTo('roles_edit')){
+            return redirect()->route('admin.errors.403');
+        }
         $role = $this->role::find($id);
         $permissions = Permission::orderBy('name')->get();
         foreach ($permissions as $permission){
@@ -80,6 +92,9 @@ class RoleController extends Controller
 
     public function update(Request $request, $id)
     {
+        if(!auth()->user()->hasPermissionTo('roles_edit')){
+            return redirect()->route('admin.errors.403');
+        }
         $validatedData = $request->validate([
             'name' => 'required|max:50',
             'permissions' => 'required',
@@ -114,6 +129,9 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
+        if(!auth()->user()->hasPermissionTo('roles_destroy')){
+            return redirect()->route('admin.errors.403');
+        }
         try {
             $role = $this->role::find($id);
             $role->delete();
@@ -130,6 +148,9 @@ class RoleController extends Controller
 
     public function search(Request $request)
     {
+        if(!auth()->user()->hasPermissionTo('roles_view')){
+            return redirect()->route('admin.errors.403');
+        }
         $role = $this->role::where('name', 'like', '%'.$request->role.'%')
             ->get();
 

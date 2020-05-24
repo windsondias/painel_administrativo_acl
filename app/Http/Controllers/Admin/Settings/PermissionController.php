@@ -18,17 +18,26 @@ class PermissionController extends Controller
 
     public function index()
     {
+        if(!auth()->user()->hasPermissionTo('permissions_view')){
+            return redirect()->route('admin.errors.403');
+        }
         $permissions = $this->permission::paginate(20);
         return view('admin.settings.permissions.index', compact('permissions'));
     }
 
     public function create()
     {
+        if(!auth()->user()->hasPermissionTo('permissions_create')){
+            return redirect()->route('admin.errors.403');
+        }
         return view('admin.settings.permissions.create');
     }
 
     public function store(Request $request)
     {
+        if(!auth()->user()->hasPermissionTo('permissions_create')){
+            return redirect()->route('admin.errors.403');
+        }
         $validatedData = $request->validate([
             'name' => 'required|max:50',
         ]);
@@ -53,12 +62,18 @@ class PermissionController extends Controller
 
     public function edit($id)
     {
+        if(!auth()->user()->hasPermissionTo('permissions_edit')){
+            return redirect()->route('admin.errors.403');
+        }
         $permission = $this->permission::find($id);
         return view('admin.settings.permissions.edit', compact( 'permission'));
     }
 
     public function update(Request $request, $id)
     {
+        if(!auth()->user()->hasPermissionTo('permissions_edit')){
+            return redirect()->route('admin.errors.403');
+        }
         $validatedData = $request->validate([
             'name' => 'required|max:50',
         ]);
@@ -80,6 +95,9 @@ class PermissionController extends Controller
 
     public function destroy($id)
     {
+        if(!auth()->user()->hasPermissionTo('permissions_destroy')){
+            return redirect()->route('admin.errors.403');
+        }
         try {
             $permission = $this->permission::find($id);
             $permission->delete();
@@ -97,6 +115,9 @@ class PermissionController extends Controller
 
     public function search(Request $request)
     {
+        if(!auth()->user()->hasPermissionTo('permissions_view')){
+            return redirect()->route('admin.errors.403');
+        }
         $permission = $this->permission::where('name', 'like', '%'.$request->permission.'%')
             ->get();
 
