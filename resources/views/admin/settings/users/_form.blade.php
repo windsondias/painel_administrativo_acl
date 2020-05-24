@@ -102,10 +102,15 @@
             </div>
             <div class="card-body">
                 <div class="form-group">
-                    @isset($roles)
+                    @if(isset($roles) && $roles->count() > 0)
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="check_all">
+                            <label class="custom-control-label" for="check_all">Selecionar Todas</label>
+                        </div>
                         @foreach($roles as $role)
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input @error('roles') is-invalid @enderror"
+                                <input type="checkbox"
+                                       class="custom-control-input @error('roles') is-invalid @enderror roles"
                                        id="role{{$role->id}}" value="{{$role->id}}"
                                        name="roles[]" @if($role->can) checked @else '' @endif>
                                 <label class="custom-control-label" for="role{{$role->id}}">{{$role->name}}</label>
@@ -116,7 +121,9 @@
                                 @enderror
                             </div>
                         @endforeach
-                    @endisset
+                    @else
+                        <p>Para cadastrar ou editar um usuário é necessario ter funções cadastradas.</p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -134,3 +141,26 @@
             Usuário  @else  Atualizar Usuário @endif </button>
     </div>
 </div>
+
+@section('js')
+
+    <script>
+
+        $(document).ready(function () {
+            if ($('.roles').prop("checked")) {
+                $("#check_all").prop("checked", true);
+            } else {
+                $("#check_all").prop("checked", false);
+            }
+            $('#check_all').change(function () {
+                if ($(this).prop("checked")) {
+                    $(".roles").prop("checked", true);
+                } else {
+                    $(".roles").prop("checked", false);
+                }
+            });
+        });
+
+    </script>
+
+@endsection

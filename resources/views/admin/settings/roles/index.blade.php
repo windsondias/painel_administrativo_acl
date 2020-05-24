@@ -11,7 +11,7 @@
                     <button class="btn btn-outline-secondary">Adicionar Função</button>
                 </a>
             </div>
-            <div class="col-md-6 mb-3">
+            <div class="col-md-6 mb-3w">
                 <div class="input-group">
                     <input type="text" class="form-control" id="search_role" placeholder="Pesquisar Função">
                     <div class="input-group-append">

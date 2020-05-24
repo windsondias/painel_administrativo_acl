@@ -63,10 +63,15 @@
                 <div class="form-group">
                     <label for="permissions">Selecione as permissões que está função pode
                         ter</label>
+                    @if(isset($permissions) && $permissions->count() > 0)
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="check_all">
+                        <label class="custom-control-label" for="check_all">Selecionar Todas</label>
+                    </div>
                     @foreach($permissions as $permission)
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox"
-                                   class="custom-control-input @error('permissions') is-invalid @enderror"
+                                   class="custom-control-input @error('permissions') is-invalid @enderror permissions"
                                    id="permissions{{$permission->id}}" value="{{$permission->id}}"
                                    name="permissions[]" @if($permission->can) checked @else '' @endif>
                             <label class="custom-control-label"
@@ -78,6 +83,9 @@
                             @enderror
                         </div>
                     @endforeach
+                    @else
+                        <p>Para cadastrar ou editar uma função é necessario ter permissões cadastradas.</p>
+                    @endif
                 </div>
             </div>
         </div>
@@ -95,3 +103,26 @@
             Função  @else  Atualizar Função @endif </button>
     </div>
 </div>
+
+@section('js')
+
+    <script>
+
+        $(document).ready(function () {
+            if($('.permissions').prop("checked")){
+                $("#check_all").prop("checked", true);
+            }else{
+                $("#check_all").prop("checked", false);
+            }
+            $('#check_all').change(function () {
+                if($(this).prop("checked")){
+                    $(".permissions").prop("checked", true);
+                }else{
+                    $(".permissions").prop("checked", false);
+                }
+            });
+        });
+
+    </script>
+
+@endsection
